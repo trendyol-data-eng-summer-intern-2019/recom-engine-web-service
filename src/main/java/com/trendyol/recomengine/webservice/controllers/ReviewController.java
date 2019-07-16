@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * Handles POST requests that contain user reviews, validates the data that comes from requests and sends them to Kafka.
  */
 @RestController
 public class ReviewController {
@@ -23,6 +23,16 @@ public class ReviewController {
         this.producer = producer;
     }
 
+    /**
+     * This method is called when a POST request happens. Validates the data in the request body using validateReview
+     * and sends them to Kafka.
+     * @param requestBody POST request's body which is converted to a ReviewWithoutUserId object.
+     * @param userId      The user's id who does the POST request.
+     * @return If the request body is a valid review, the method returns the same review that is posted. Otherwise,
+     * the method returns an error message which tells why the request body is invalid.
+     * @see ReviewController#validateReview(Review)
+     * @see ReviewWithoutUserId
+     */
     @PostMapping(value = "/users/{userId}/reviews")
     public Object sendMessageToKafkaTopic(@RequestBody ReviewWithoutUserId requestBody, @PathVariable String userId) {
         Review review = new Review(userId, requestBody);
@@ -36,12 +46,26 @@ public class ReviewController {
             return validationError;
         }
 
-        String dataToSendToKafka = String.format("%s,%s,%.1f,%d", userId, requestBody.getProductId(), requestBody.getScore(), requestBody.getTimestamp().getTime());
+        String dataToSendToKafka = String.format("%s,%s,%.1f,%d", userId, requestBody.getProductId(),
+                requestBody.getScore(), requestBody.getTimestamp().getTime());
         this.producer.sendMessage(dataToSendToKafka);
 
         return review;
     }
 
+    /**
+     * Validates the review that is posted from user in terms of 4 criteria:
+     * <ul>
+     * <li>User's id must contain alphanumeric characters.</li>
+     * <li>Product's id must contain alphanumeric characters.<br></li>
+     * <li>The score that the user give to the product must be in between 0 and 5.<br></li>
+     * <li>The timestamp field must be non-negative.<br></li>
+     * </ul>
+     * @param review The user review that is to be validated.
+     * @return If at least one of these criteria does not meet, the method returns a ValidationError. Otherwise, it
+     * returns null.
+     * @see ValidationError
+     */
     private ValidationError validateReview(Review review) {
         if (!review.getUserId().matches("^[a-zA-Z0-9]+$")) {
             return ValidationError.generateInvalidUserIdError();
