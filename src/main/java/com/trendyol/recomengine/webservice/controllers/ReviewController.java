@@ -1,15 +1,18 @@
-package com.trendyol.recomengine.controllers;
+package com.trendyol.recomengine.webservice.controllers;
 
-import com.trendyol.recomengine.engine.Producer;
-import com.trendyol.recomengine.resource.Review;
-import com.trendyol.recomengine.resource.ReviewWithoutUserId;
-import com.trendyol.recomengine.resource.ValidationError;
+import com.trendyol.recomengine.webservice.engine.Producer;
+import com.trendyol.recomengine.webservice.resource.Review;
+import com.trendyol.recomengine.webservice.resource.ReviewWithoutUserId;
+import com.trendyol.recomengine.webservice.resource.ValidationError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ *
+ */
 @RestController
 public class ReviewController {
 

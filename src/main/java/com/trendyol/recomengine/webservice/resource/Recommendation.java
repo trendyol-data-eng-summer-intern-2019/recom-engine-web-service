@@ -1,4 +1,4 @@
-package com.trendyol.recomengine.resource;
+package com.trendyol.recomengine.webservice.resource;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

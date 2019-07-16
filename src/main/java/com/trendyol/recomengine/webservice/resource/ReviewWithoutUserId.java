@@ -1,4 +1,4 @@
-package com.trendyol.recomengine.resource;
+package com.trendyol.recomengine.webservice.resource;
 
 import java.util.Date;
 
