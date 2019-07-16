@@ -2,34 +2,22 @@ package com.trendyol.recomengine.resource;
 
 import java.util.Date;
 
-public class Review {
+public class Review extends ReviewWithoutUserId {
 
     private final String userId;
-    private final String productId;
-    private final float score;
-    private final Date time;
 
     public Review(String userId, String productId, float score, Date time) {
+        super(productId, score, time);
         this.userId = userId;
-        this.productId = productId;
-        this.score = score;
-        this.time = time;
+    }
+
+    public Review(String userId, ReviewWithoutUserId reviewWithoutUserId) {
+        super(reviewWithoutUserId.getProductId(), reviewWithoutUserId.getScore(), reviewWithoutUserId.getTimestamp());
+        this.userId = userId;
     }
 
     public String getUserId() {
         return userId;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public float getScore() {
-        return score;
-    }
-
-    public Date getTime() {
-        return time;
     }
 
 }

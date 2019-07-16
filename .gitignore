@@ -83,3 +83,7 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+
+### META-INF ###
+src/main/java/META-INF/
+
