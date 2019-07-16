@@ -19,7 +19,7 @@ public class RecommendationController {
     /**
      * This method is called when a GET request happens. Fetches recommendations from database for the user that is
      * specified in the argument.
-     * @param userId The user's id who does the GET request.
+     * @param userId The user's id who sends the GET request.
      * @return If there is a recommendation list for the user in the database, returns it. Otherwise, returns a default
      * recommendation list using generateDefaultRecommendations.
      * @see RecommendationController#generateDefaultRecommendations(String)

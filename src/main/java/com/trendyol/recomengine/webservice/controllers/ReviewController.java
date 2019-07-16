@@ -27,7 +27,7 @@ public class ReviewController {
      * This method is called when a POST request happens. Validates the data in the request body using validateReview
      * and sends them to Kafka.
      * @param requestBody POST request's body which is converted to a ReviewWithoutUserId object.
-     * @param userId      The user's id who does the POST request.
+     * @param userId      The user's id who sends the POST request.
      * @return If the request body is a valid review, the method returns the same review that is posted. Otherwise,
      * the method returns an error message which tells why the request body is invalid.
      * @see ReviewController#validateReview(Review)
