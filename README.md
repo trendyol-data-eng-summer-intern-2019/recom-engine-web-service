@@ -18,9 +18,9 @@ localhost:8080/users/{userId}/reviews
 A request body of the following form must be specified for the `POST` request:
 ```
 {
-  'productId': [some_alphanumeric_id],
-  'score': [some_float_number],
-  'timestamp': [some_timestamp_greater_than_zero]
+  "productId": "some_alphanumeric_id",
+  "score": some_float_number,
+  "timestamp": some_timestamp_greater_than_zero
 }
 ```
 
