@@ -13,7 +13,7 @@ This component cannot be run by itself. In order to run this component, all of t
 
 
 ### Making GET Request
-You can retrieve the user specific recommendations by invoking a `GET` request to the URL localhost:8080/users/{userId}/recommendations. User id of the user whom recommendations you want to retrieve is given in the URL path. For example, if you want to fetch the recommendations for the user with id 3, you should send a `GET` request to following URL path:
+You can retrieve the user specific recommendations by invoking a `GET` request to the URL **localhost:8080/users/{userId}/recommendations**. User id of the user whom recommendations you want to retrieve is given in the URL path. For example, if you want to fetch the recommendations for the user with id 3, you should send a `GET` request to following URL path:
 ```
 localhost:8080/users/3/recommendations
 ```
