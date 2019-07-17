@@ -13,6 +13,7 @@ public interface RecommendationRepository extends MongoRepository<Recommendation
     /**
      * Searches for a document having the same _id with the method parameter in the specified collection of a specified
      * MongoDB database which are configured in the application.yml file.
+     *
      * @param _id Document id to be searched.
      * @return If the document is found, converts document to a Recommendation object and returns it; returns null
      * otherwise.
