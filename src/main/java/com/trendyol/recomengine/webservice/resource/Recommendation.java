@@ -21,7 +21,6 @@ public class Recommendation {
     private final String[] recommendations;
 
     /**
-     *
      * @param _id The user's id who sends the POST request.
      * @param recommendations Specific recommendations for the user
      */
@@ -31,7 +30,6 @@ public class Recommendation {
     }
 
     /**
-     *
      * @return Id of the user
      */
     public String get_id() {
@@ -39,7 +37,6 @@ public class Recommendation {
     }
 
     /**
-     *
      * @return Recommendations of the user
      */
     public String[] getRecommendations() {

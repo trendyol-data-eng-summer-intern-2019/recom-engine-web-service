@@ -10,7 +10,6 @@ public class Review extends ReviewWithoutUserId {
     private final String userId;
 
     /**
-     *
      * @param userId User's id who reviewed
      * @param productId Reviewed product's id
      * @param score Reviewed score
@@ -22,7 +21,6 @@ public class Review extends ReviewWithoutUserId {
     }
 
     /**
-     *
      * @param userId User's id who reviewed
      * @param reviewWithoutUserId ProductId, score and timestamp without user id
      */
@@ -32,7 +30,6 @@ public class Review extends ReviewWithoutUserId {
     }
 
     /**
-     *
      * @return The user id who reviewed
      */
     public String getUserId() {

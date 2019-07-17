@@ -1,5 +1,6 @@
 package com.trendyol.recomengine.webservice.resource;
 
+import javax.validation.constraints.*;
 import java.util.Date;
 
 /**
@@ -7,12 +8,15 @@ import java.util.Date;
  */
 public class ReviewWithoutUserId {
 
+    @NotBlank
     private final String productId;
+
+    @DecimalMin(value = "0.5", inclusive = true) @Max(5)
     private final float score;
+
     private final Date timestamp;
 
     /**
-     *
      * @param productId Reviewed product's id
      * @param score Reviewed score
      * @param timestamp Review timestamp
@@ -24,7 +28,6 @@ public class ReviewWithoutUserId {
     }
 
     /**
-     *
      * @return Id of the product
      */
     public String getProductId() {
@@ -32,7 +35,6 @@ public class ReviewWithoutUserId {
     }
 
     /**
-     *
      * @return Review score of the product
      */
     public float getScore() {
@@ -40,7 +42,6 @@ public class ReviewWithoutUserId {
     }
 
     /**
-     *
      * @return Review timestamp in seconds
      */
     public Date getTimestamp() {
