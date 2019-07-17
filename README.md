@@ -12,7 +12,7 @@ This component cannot be run by itself. In order to run this component, all of t
 ### Making a POST Request
 New review can be posted to the system by invoking `POST` request to the URL **localhost:8080/users/{userId}/reviews**. For example, if you want to post a review for user with id 2, you should send a `POST` request to following URL path:
 ```
-localhost:8080/users/{userId}/reviews
+localhost:8080/users/2/reviews
 ```
 
 A request body of the following form must be specified for the `POST` request:
@@ -29,18 +29,18 @@ Following header must be specified:
 Content-Type: application/json
 ```
 
-You can use the following command to post a new review to the system:
+You can use the following command to post a new review to the system for user with id 2:
 ```
 curl -H 'Content-Type: application/json' -d '{
   "productId": "3",
   "score": 4.5,
   "timestamp": 10
-}' localhost:8080/users/3/reviews
+}' localhost:8080/users/2/reviews
 ```
 
 Output:
 ```
-{"productId":"3","score":4.5,"timestamp":"1970-01-01T00:00:00.010+0000","userId":"3"}
+{"productId":"3","score":4.5,"timestamp":"1970-01-01T00:00:00.010+0000","userId":"2"}
 ```
 
 You can install `jq` and beautify the output as follows:
@@ -49,7 +49,7 @@ curl -H 'Content-Type: application/json' -d '{
   "productId": "3",
   "score": 4.5,
   "timestamp": 10
-}' localhost:8080/users/3/reviews | jq
+}' localhost:8080/users/2/reviews | jq
 ```
 
 Output:
@@ -58,7 +58,7 @@ Output:
   "productId": "3",
   "score": 4.5,
   "timestamp": "1970-01-01T00:00:00.010+0000",
-  "userId": "3"
+  "userId": "2"
 }
 ```
 
