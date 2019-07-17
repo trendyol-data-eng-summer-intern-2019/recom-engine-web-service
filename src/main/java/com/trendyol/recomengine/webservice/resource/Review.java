@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class Review extends ReviewWithoutUserId {
 
+    @NotBlank
     private final String userId;
 
     /**
