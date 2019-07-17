@@ -1,5 +1,6 @@
 package com.trendyol.recomengine.webservice.resource;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 /**
