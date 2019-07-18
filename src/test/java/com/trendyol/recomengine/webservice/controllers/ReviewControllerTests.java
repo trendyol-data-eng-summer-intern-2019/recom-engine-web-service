@@ -28,6 +28,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.ResultMatcher.matchAll;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -51,7 +52,7 @@ public class ReviewControllerTests {
         Timestamp t = new Timestamp(10);
         String time = getTimeStringFormatted(t);
         Review review = new Review(userId, "5", 3.5F, t);
-
+        given(kafkaTemplate.sendDefault("3,5,3.5,10")).willReturn(null);
         this.mockMvc.perform(post("/users/"+userId+"/reviews")
                 .content(asJsonString(review))
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -82,48 +83,5 @@ public class ReviewControllerTests {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Before
-    public void setUp() {
-        Mockito.when(kafkaTemplate.sendDefault("3,5,3.5,10")).thenReturn(new ListenableFuture<SendResult<String, String>>() {
-            @Override
-            public void addCallback(ListenableFutureCallback<? super SendResult<String, String>> callback) {
-
-            }
-
-            @Override
-            public void addCallback(SuccessCallback<? super SendResult<String, String>> successCallback, FailureCallback failureCallback) {
-
-            }
-
-            @Override
-            public boolean cancel(boolean b) {
-                return false;
-            }
-
-            @Override
-            public boolean isCancelled() {
-                return false;
-            }
-
-            @Override
-            public boolean isDone() {
-                return false;
-            }
-
-            @Override
-            public SendResult<String, String> get() throws InterruptedException, ExecutionException {
-                return null;
-            }
-
-            @Override
-            public SendResult<String, String> get(long l, TimeUnit timeUnit) throws InterruptedException, ExecutionException, TimeoutException {
-                return null;
-            }
-        });/*.then((Answer<String>) invocation -> {
-            System.out.println("3,5,3.5,10 -- printed");
-            return "Do nothing.";
-        });*/
     }
 }
