@@ -1,7 +1,7 @@
-package com.trendyol.recomengine.webservice.controllers;
+package com.trendyol.recomengine.webservice.controller;
 
-import com.trendyol.recomengine.webservice.repositories.RecommendationRepository;
-import com.trendyol.recomengine.webservice.resource.Recommendation;
+import com.trendyol.recomengine.webservice.model.Recommendation;
+import com.trendyol.recomengine.webservice.repository.RecommendationRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.ResultMatcher.matchAll;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

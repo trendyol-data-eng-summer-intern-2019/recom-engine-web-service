@@ -1,9 +1,8 @@
-package com.trendyol.recomengine.webservice.controllers;
+package com.trendyol.recomengine.webservice.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trendyol.recomengine.webservice.engine.Producer;
-import com.trendyol.recomengine.webservice.resource.Review;
-import com.trendyol.recomengine.webservice.resource.ReviewWithoutUserId;
+import com.trendyol.recomengine.webservice.model.Review;
+import com.trendyol.recomengine.webservice.model.ReviewWithoutUserId;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,11 +1,10 @@
-package com.trendyol.recomengine.webservice.resource;
+package com.trendyol.recomengine.webservice.model;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * To keep productId, score and timestamp without user id

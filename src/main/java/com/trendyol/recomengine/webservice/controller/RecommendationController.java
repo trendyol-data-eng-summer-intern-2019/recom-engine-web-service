@@ -1,8 +1,7 @@
-package com.trendyol.recomengine.webservice.controllers;
+package com.trendyol.recomengine.webservice.controller;
 
-import com.trendyol.recomengine.webservice.repositories.RecommendationRepository;
-import com.trendyol.recomengine.webservice.resource.Recommendation;
-import com.trendyol.recomengine.webservice.services.RecommendationService;
+import com.trendyol.recomengine.webservice.model.Recommendation;
+import com.trendyol.recomengine.webservice.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

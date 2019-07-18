@@ -1,6 +1,6 @@
-package com.trendyol.recomengine.webservice.repositories;
+package com.trendyol.recomengine.webservice.repository;
 
-import com.trendyol.recomengine.webservice.resource.Recommendation;
+import com.trendyol.recomengine.webservice.model.Recommendation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

@@ -1,8 +1,8 @@
-package com.trendyol.recomengine.webservice.services.impl;
+package com.trendyol.recomengine.webservice.service.impl;
 
-import com.trendyol.recomengine.webservice.repositories.RecommendationRepository;
-import com.trendyol.recomengine.webservice.resource.Recommendation;
-import com.trendyol.recomengine.webservice.services.RecommendationService;
+import com.trendyol.recomengine.webservice.model.Recommendation;
+import com.trendyol.recomengine.webservice.repository.RecommendationRepository;
+import com.trendyol.recomengine.webservice.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,7 @@
-package com.trendyol.recomengine.webservice.resource;
+package com.trendyol.recomengine.webservice.model;
 
 import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * To keep reviews
