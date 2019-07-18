@@ -4,6 +4,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -19,14 +20,14 @@ public class ReviewWithoutUserId {
     private final float score;
 
     @NotNull
-    private final Date timestamp;
+    private final Timestamp timestamp;
 
     /**
      * @param productId Reviewed product's id
      * @param score     Reviewed score
      * @param timestamp Review timestamp
      */
-    ReviewWithoutUserId(String productId, float score, Date timestamp) {
+    ReviewWithoutUserId(String productId, float score, Timestamp timestamp) {
         this.productId = productId;
         this.score = score;
         this.timestamp = timestamp;
@@ -49,7 +50,7 @@ public class ReviewWithoutUserId {
     /**
      * @return Review timestamp in seconds
      */
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 

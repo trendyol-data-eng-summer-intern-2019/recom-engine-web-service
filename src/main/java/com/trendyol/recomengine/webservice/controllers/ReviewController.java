@@ -1,5 +1,6 @@
 package com.trendyol.recomengine.webservice.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trendyol.recomengine.webservice.engine.Producer;
 import com.trendyol.recomengine.webservice.resource.Review;
 import com.trendyol.recomengine.webservice.resource.ReviewWithoutUserId;
