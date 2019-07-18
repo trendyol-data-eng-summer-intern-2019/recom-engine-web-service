@@ -2,6 +2,7 @@ package com.trendyol.recomengine.webservice.controllers;
 
 import com.trendyol.recomengine.webservice.repositories.RecommendationRepository;
 import com.trendyol.recomengine.webservice.resource.Recommendation;
+import com.trendyol.recomengine.webservice.services.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 class RecommendationController {
 
     @Autowired
-    private RecommendationRepository repository;
+    RecommendationService recommendationService;
 
     /**
      * This method is called when a GET request happens. Fetches recommendations from database for the user that is
@@ -27,22 +28,6 @@ class RecommendationController {
      */
     @GetMapping("/users/{userId}/recommendations")
     Recommendation getRecommendation(@PathVariable String userId) {
-        Recommendation fetched = repository.findBy_id(userId);
-        return fetched == null ? generateDefaultRecommendations(userId) : fetched;
-    }
-
-    /**
-     * Generates a default recommendation list for the user. For now, it returns 10 products' ids but default
-     * recommendations could be generated based on a criterion.
-     *
-     * @param userId The user id of the user that is to be recommended.
-     * @return A list of recommendations that is generated for the user.
-     * @see Recommendation
-     */
-    private Recommendation generateDefaultRecommendations(String userId) {
-        return new Recommendation(userId, new String[]{
-                "100", "101", "102", "103", "104",
-                "105", "106", "107", "108", "109"
-        });
+        return recommendationService.getRecommendations(userId);
     }
 }
