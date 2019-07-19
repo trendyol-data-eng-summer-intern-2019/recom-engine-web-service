@@ -1,6 +1,6 @@
-package com.trendyol.recomengine.webservice.repositories;
+package com.trendyol.recomengine.webservice.repository;
 
-import com.trendyol.recomengine.webservice.resource.Recommendation;
+import com.trendyol.recomengine.webservice.model.Recommendation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -13,6 +13,7 @@ public interface RecommendationRepository extends MongoRepository<Recommendation
     /**
      * Searches for a document having the same _id with the method parameter in the specified collection of a specified
      * MongoDB database which are configured in the application.yml file.
+     *
      * @param _id Document id to be searched.
      * @return If the document is found, converts document to a Recommendation object and returns it; returns null
      * otherwise.

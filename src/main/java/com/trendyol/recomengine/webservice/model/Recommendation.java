@@ -1,4 +1,4 @@
-package com.trendyol.recomengine.webservice.resource;
+package com.trendyol.recomengine.webservice.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -21,7 +21,7 @@ public class Recommendation {
     private final String[] recommendations;
 
     /**
-     * @param _id The user's id who sends the POST request.
+     * @param _id             The user's id who sends the POST request.
      * @param recommendations Specific recommendations for the user
      */
     public Recommendation(String _id, String[] recommendations) {

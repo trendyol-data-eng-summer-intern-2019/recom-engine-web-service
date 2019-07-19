@@ -1,7 +1,7 @@
-package com.trendyol.recomengine.webservice.resource;
+package com.trendyol.recomengine.webservice.model;
 
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * To keep reviews
@@ -12,18 +12,18 @@ public class Review extends ReviewWithoutUserId {
     private final String userId;
 
     /**
-     * @param userId User's id who reviewed
+     * @param userId    User's id who reviewed
      * @param productId Reviewed product's id
-     * @param score Reviewed score
-     * @param time Review timestamp
+     * @param score     Reviewed score
+     * @param time      Review timestamp
      */
-    public Review(String userId, String productId, float score, Date time) {
+    public Review(String userId, String productId, float score, Timestamp time) {
         super(productId, score, time);
         this.userId = userId;
     }
 
     /**
-     * @param userId User's id who reviewed
+     * @param userId              User's id who reviewed
      * @param reviewWithoutUserId ProductId, score and timestamp without user id
      */
     public Review(String userId, ReviewWithoutUserId reviewWithoutUserId) {

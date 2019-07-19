@@ -21,6 +21,7 @@ public class Producer {
     /**
      * Sends message to the default topic configured in the application.yml file. If the message is successfully sent
      * to the Kafka cluster, logs the produced message at INFO level.
+     *
      * @param message Message string to be sent to Kafka cluster's default topic.
      */
     public void sendMessage(String message) {

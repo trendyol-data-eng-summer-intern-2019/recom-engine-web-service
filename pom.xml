@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
     <groupId>com.trendyol</groupId>
-    <artifactId>recom-engine</artifactId>
+    <artifactId>recom-engine-web-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>recom-engine</name>
     <description>Demo project for Spring Boot</description>
@@ -28,7 +28,6 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
