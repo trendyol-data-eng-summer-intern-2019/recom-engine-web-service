@@ -7,7 +7,7 @@ The API mainly uses two HTTP methods: `POST` and `GET`. `POST` method is for use
 
 ## Usage
 ### Run
-This component cannot be run by itself. In order to run this component, all of the project components must be run using `docker-compose`. See [Recommender Engine - Docker Files](https://github.com/trendyol-data-eng-summer-intern-2019/recom-engine-docker)
+This component cannot be run by itself. In order to run this component, all of the project components must be run using `docker-compose`. See [Recommendation Engine - Docker Files](https://github.com/trendyol-data-eng-summer-intern-2019/recom-engine-docker)
 
 ### Making a POST Request
 New review can be posted to the system by invoking `POST` request to the URL **localhost:8080/users/{userId}/reviews**. For example, if you want to post a review for user with id 2, you should send a `POST` request to following URL path:
