@@ -2,12 +2,14 @@ package com.trendyol.recomengine.webservice.repository;
 
 import com.trendyol.recomengine.webservice.model.Recommendation;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * Used to fetch recommendations of a specific user from MongoDB. Extends interface MongoRepository that is needed to
  * configure the Spring Boot application to retrieve data from MongoDB. Required confifgurations are made in the
  * application.yml file.
  */
+@Repository
 public interface RecommendationRepository extends MongoRepository<Recommendation, String> {
 
     /**

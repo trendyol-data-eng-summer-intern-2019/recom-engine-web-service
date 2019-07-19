@@ -2,6 +2,7 @@ package com.trendyol.recomengine.webservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trendyol.recomengine.webservice.model.Review;
+import com.trendyol.recomengine.webservice.repository.RecommendationRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
