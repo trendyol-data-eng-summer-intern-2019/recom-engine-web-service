@@ -1,4 +1,4 @@
-# Recommender Engine - Web Service Component
+# Recommendation Engine - Web Service Component
 
 ## Description
 This repository contains the web service (RESTful API) component of the recommender engine. The component is written using Spring Boot.
