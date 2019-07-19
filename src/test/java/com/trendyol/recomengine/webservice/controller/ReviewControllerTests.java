@@ -13,6 +13,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
@@ -34,21 +35,12 @@ public class ReviewControllerTests {
     @MockBean
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Test
     public void createReviewShouldReturnTheGivenReviewBack() throws Exception {
         String userId = "3";
-        Timestamp t = new Timestamp(10);
-        String time = getTimeStringFormatted(t);
-        Review review = new Review(userId, "5", 3.5F, t);
-        given(kafkaTemplate.sendDefault("3,5,3.5,10")).willReturn(null);
+        Timestamp timestamp = new Timestamp(10);
+        String time = getTimeStringFormatted(timestamp);
+        Review review = new Review(userId, "5", 3.5F, timestamp);
         this.mockMvc.perform(post("/users/" + userId + "/reviews")
                 .content(asJsonString(review))
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -62,6 +54,59 @@ public class ReviewControllerTests {
                         jsonPath("$.score").value(review.getScore()),
                         jsonPath("$.timestamp").value(time)
                 ));
+    }
+
+    @Test
+    public void createReviewShouldReturnBadRequestSinceScoreIsNotValid() throws Exception {
+        String userId = "3";
+        String productId = "5";
+        float score = 6F;
+        Timestamp timestamp = new Timestamp(10);
+        Review review = new Review(userId, productId, score, timestamp);
+        this.mockMvc.perform(post("/users/" + userId + "/reviews")
+                .content(asJsonString(review))
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(print())
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void createReviewShouldReturnNotFoundSinceUserIdIsEmpty() throws Exception {
+        String userId = "";
+        Timestamp timestamp = new Timestamp(10);
+        String time = getTimeStringFormatted(timestamp);
+        Review review = new Review(userId, "5", 3.5F, timestamp);
+        this.mockMvc.perform(post("/users/" + userId + "/reviews")
+                .content(asJsonString(review))
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(print())
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void createReviewShouldReturnBadRequestSinceAllFieldsDoNotExist() throws Exception {
+        String uId = "3";
+        Object review = new Object() {
+            public final String userId = uId;
+            public final String productId = "5";
+            public final Timestamp timestamp = new Timestamp(10);
+        };
+        this.mockMvc.perform(post("/users/" + uId + "/reviews")
+                .content(asJsonString(review))
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .accept(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(print())
+                .andExpect(status().isBadRequest());
+    }
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private String getTimeStringFormatted(Timestamp time) {
