@@ -2,7 +2,6 @@ package com.trendyol.recomengine.webservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trendyol.recomengine.webservice.model.Review;
-import com.trendyol.recomengine.webservice.repository.RecommendationRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +13,10 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
-import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.ResultMatcher.matchAll;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -35,6 +32,14 @@ public class ReviewControllerUnitTests {
 
     @MockBean
     private KafkaTemplate<String, String> kafkaTemplate;
+
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Test
     public void createReviewShouldReturnTheGivenReviewBack() throws Exception {
@@ -100,14 +105,6 @@ public class ReviewControllerUnitTests {
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print())
                 .andExpect(status().isBadRequest());
-    }
-
-    public static String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private String getTimeStringFormatted(Timestamp time) {
