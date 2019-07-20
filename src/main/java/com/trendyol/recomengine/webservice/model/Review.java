@@ -1,6 +1,7 @@
 package com.trendyol.recomengine.webservice.model;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.sql.Timestamp;
 
 /**
@@ -9,6 +10,7 @@ import java.sql.Timestamp;
 public class Review extends ReviewWithoutUserId {
 
     @NotBlank
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "userId must only contain alphanumeric characters.")
     private final String userId;
 
     /**

@@ -11,7 +11,7 @@
     <groupId>com.trendyol</groupId>
     <artifactId>recom-engine-web-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>recom-engine</name>
+    <name>recom-engine-web-service</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -41,6 +41,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>1.11.3</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

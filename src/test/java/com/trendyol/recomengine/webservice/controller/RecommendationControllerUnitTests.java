@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RecommendationControllerTests {
+public class RecommendationControllerUnitTests {
 
     @Autowired
     private MockMvc mockMvc;

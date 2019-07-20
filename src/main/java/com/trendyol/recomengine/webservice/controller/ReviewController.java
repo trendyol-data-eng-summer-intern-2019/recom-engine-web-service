@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 /**
  * Handles POST requests that contain user reviews, validates the data that comes from requests and sends them to Kafka.
@@ -33,7 +35,13 @@ public class ReviewController {
      * @see ReviewWithoutUserId
      */
     @PostMapping(value = "/users/{userId}/reviews")
-    public Object createReview(@Valid @RequestBody ReviewWithoutUserId requestBody, @PathVariable String userId) {
+    public Object createReview(@Valid @RequestBody ReviewWithoutUserId requestBody,
+                               @PathVariable
+                               @Valid
+                               @NotBlank
+                               @Pattern(regexp = "^[a-zA-Z0-9]+$"
+                                       , message = "userId must only contain alphanumeric characters.")
+                                       String userId) {
         Review review = new Review(userId, requestBody);
 
         String dataToSendToKafka = String.format("%s,%s,%.1f,%d", userId, requestBody.getProductId(),
